@@ -1,0 +1,30 @@
+resources:
+  jobs:
+    Earthqake_E2E_Job:
+      name: Earthqake_E2E_Job
+      tasks:
+        - task_key: Ingestion_To_Bronze
+          notebook_task:
+            notebook_path: ../src/notebooks/ingestion_to_bronze
+            base_parameters:
+              catalog_name: dev
+            source: WORKSPACE
+        - task_key: Bronze_To_Silver
+          depends_on:
+            - task_key: Ingestion_To_Bronze
+          pipeline_task:
+            pipeline_id:  ${resources.pipelines.bronze_silver_earthquake_etl.id}
+            full_refresh: false
+        - task_key: EarthQuake_DashBoard
+          depends_on:
+            - task_key: Bronze_To_Silver
+          dashboard_task:
+            subscription: {}
+            warehouse_id: 3be3918113e8fce9
+            dashboard_id: ${resources.dashboards.earthquake_monitor.id}
+      queue:
+        enabled: true
+      parameters:
+        - name: catalog_name
+          default: dev
+      performance_target: PERFORMANCE_OPTIMIZED

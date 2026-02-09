@@ -1,0 +1,38 @@
+# The main pipeline for databricks_e2e_project_bundle
+
+# resources:
+#   pipelines:
+#     databricks_e2e_project_bundle_etl:
+#       name: databricks_e2e_project_bundle_etl
+#       catalog: ${var.catalog}
+#       schema: ${var.schema}
+#       root_path: "../src/databricks_e2e_project_bundle_etl"
+
+#       libraries:
+#         - glob:
+#             include: ../src/databricks_e2e_project_bundle_etl/transformations/**
+
+#       environment:
+#         dependencies:
+#           # We include every dependency defined by pyproject.toml by defining an editable environment
+#           # that points to the folder where pyproject.toml is deployed.
+#           - --editable ${workspace.file_path}
+
+
+resources:
+  pipelines:
+    pipeline_bronze_to_silver:
+      name: Bronze_To_Silver
+      configuration:
+        catalog_name: ${var.catalog}
+      libraries:
+        - glob:
+            include: ../src/DLT_Pipeline/Bronze_To_Silver/transformations/**
+      schema: ${var.schema}
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog}
+      serverless: true
+      root_path: ../src/DLT_Pipeline/Bronze_To_Silver

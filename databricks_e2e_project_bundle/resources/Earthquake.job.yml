@@ -5,7 +5,7 @@ resources:
       tasks:
         - task_key: Ingestion_To_Bronze
           notebook_task:
-            notebook_path: ../src/notebooks/ingestion_to_bronze
+            notebook_path: ../src/notebooks/ingestion_to_bronze.ipynb
             base_parameters:
               catalog_name: dev
             source: WORKSPACE
@@ -13,7 +13,7 @@ resources:
           depends_on:
             - task_key: Ingestion_To_Bronze
           pipeline_task:
-            pipeline_id:  ${resources.pipelines.bronze_silver_earthquake_etl.id}
+            pipeline_id:  ${resources.pipelines.pipeline_bronze_to_silver.id}
             full_refresh: false
         - task_key: EarthQuake_DashBoard
           depends_on:
@@ -21,7 +21,7 @@ resources:
           dashboard_task:
             subscription: {}
             warehouse_id: 3be3918113e8fce9
-            dashboard_id: ${resources.dashboards.earthquake_monitor.id}
+            dashboard_id: ${resources.dashboards.earthquake_dashboard.id}
       queue:
         enabled: true
       parameters:

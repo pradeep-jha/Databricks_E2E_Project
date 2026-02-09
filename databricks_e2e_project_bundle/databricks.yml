@@ -14,6 +14,8 @@ variables:
     description: The catalog to use
   schema:
     description: The schema to use
+  warehouse_id:
+    description: The warehouse ID
 
 targets:
   dev:
@@ -28,6 +30,7 @@ targets:
     variables:
       catalog: dev
       schema: dev
+      warehouse_id: 3be3918113e8fce9
     presets:
       artifacts_dynamic_version: true
   prod:
@@ -39,6 +42,7 @@ targets:
     variables:
       catalog: prod
       schema: prod
+      warehouse_id: 3be3918113e8fce9
     permissions:
       - user_name: pradeep.jha1987@gmail.com
         level: CAN_MANAGE

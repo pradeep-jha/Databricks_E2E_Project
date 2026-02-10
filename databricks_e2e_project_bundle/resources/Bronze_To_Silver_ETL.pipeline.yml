@@ -22,7 +22,7 @@
 resources:
   pipelines:
     pipeline_bronze_to_silver:
-      name: Bronze_To_Silver
+      name: PROD_Bronze_To_Silver
       configuration:
         catalog_name: ${var.catalog}
       libraries:

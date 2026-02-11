@@ -51,5 +51,5 @@ targets:
     permissions:
       - user_name: pradeep.jha1987@gmail.com
         level: CAN_MANAGE
-      - group_name: db_writer
+      - group_name: db_writers
         level: CAN_MANAGE

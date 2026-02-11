@@ -17,7 +17,7 @@ variables:
   warehouse_id:
     description: The warehouse-id to use
   spn_id:
-    description: spn id
+    description: service principal id
 
 targets:
   dev:

@@ -1,7 +1,7 @@
 resources:
   jobs:
     Earthqake_E2E_Job:
-      name: Earthqake_E2E_Job
+      name: Earthqake_E2E_Job_Prod
       tasks:
         - task_key: Ingestion_To_Bronze
           notebook_task:
@@ -22,6 +22,8 @@ resources:
             subscription: {}
             warehouse_id: 3be3918113e8fce9
             dashboard_id: ${resources.dashboards.earthquake_dashboard.id}
+      run_as:
+        service_principal_name: ${var.spn_id}
       queue:
         enabled: true
       parameters:

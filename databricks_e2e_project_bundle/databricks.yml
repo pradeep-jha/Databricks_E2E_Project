@@ -16,6 +16,8 @@ variables:
     description: The schema to use
   warehouse_id:
     description: The warehouse-id to use
+  spn_id:
+    description: spn id
 
 targets:
   dev:
@@ -31,6 +33,7 @@ targets:
       catalog: dev
       schema: dev
       warehouse_id: 3be3918113e8fce9
+      spn_id: 6c818fe8-bdf1-41e5-abb5-9728a30edacf
     presets:
       artifacts_dynamic_version: true
   prod:
@@ -44,6 +47,9 @@ targets:
       catalog: prod
       schema: prod
       warehouse_id: 3be3918113e8fce9
+      spn_id: 6c818fe8-bdf1-41e5-abb5-9728a30edacf
     permissions:
       - user_name: pradeep.jha1987@gmail.com
+        level: CAN_MANAGE
+      - group_name: db_writer
         level: CAN_MANAGE

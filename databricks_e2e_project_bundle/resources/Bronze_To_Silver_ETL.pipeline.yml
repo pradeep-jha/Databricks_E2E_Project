@@ -28,7 +28,7 @@ resources:
       libraries:
         - glob:
             include: ../src/DLT_Pipeline/Bronze_To_Silver/transformations/**
-      schema: ${var.schema}
+      schema: silver
       continuous: false
       development: false
       photon: true

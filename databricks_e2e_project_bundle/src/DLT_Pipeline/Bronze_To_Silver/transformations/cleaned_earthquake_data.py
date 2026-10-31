@@ -10,7 +10,7 @@ from pyspark.sql.functions import (
 import dlt
 from pyspark.sql.types import *
 
-# This file defines a sample transformation.
+# This file defines a sample transformation..
 # Edit the sample below or add new transformations
 # using "+ Add" in the file browser.
 catalog_name=spark.conf.get('catalog_name')
